@@ -1,58 +1,108 @@
 import React, { useState } from "react";
 import "./App.css";
+import women from "./women.png";
 
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleLogin(e) {
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    if (email === "" || password === "") {
+    if (!email || !password) {
       alert("Please fill all fields");
-    } else {
-      alert("Login Successful");
-      console.log("Email:", email);
-      console.log("Password:", password);
-
-      setEmail("");
-      setPassword("");
+      return;
     }
-  }
+
+    alert("Login Successful");
+  };
 
   return (
-    <div className="container">
-      <div className="login-box">
+    <div className="main">
 
-        <h1>Login Page</h1>
+      {/* Left Section */}
 
-        <form onSubmit={handleLogin}>
+      <div className="left">
 
-          <label>Email</label>
+        <div className="loginBox">
 
-          <input
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <h1>Welcome Back</h1>
 
-          <label>Password</label>
+          <p>Login to continue your journey.</p>
 
-          <input
-            type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <form onSubmit={handleLogin}>
 
-          <button type="submit">
-            Login
-          </button>
+            <label>Email Address</label>
 
-        </form>
+            <input
+              type="email"
+              placeholder="Enter Email"
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
+            />
+
+            <label>Password</label>
+
+            <input
+              type="password"
+              placeholder="Enter Password"
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
+            />
+
+            <div className="options">
+
+              <label className="remember">
+                <input type="checkbox"/>
+                Remember Me
+              </label>
+
+              <a href="/">Forgot Password?</a>
+
+            </div>
+
+            <button>Sign In</button>
+
+            <div className="googleBtn">
+
+    <img
+        src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+        alt="Google"
+    />
+
+    <span>Continue with Google</span>
+
+</div>
+
+            <p className="signup">
+              Don't have an account?
+              <a href="/"> Sign Up</a>
+            </p>
+
+          </form>
+
+        </div>
 
       </div>
+
+      {/* Right Section */}
+
+      <div className="right">
+
+        {/* Right Section */}
+
+<div className="right">
+
+    <img
+        src={women}
+        alt="Woman"
+        className="womanImage"
+    />
+
+</div>
+
+      </div>
+
     </div>
   );
 }
